@@ -1,0 +1,19 @@
+{
+  "name": "api-bancos",
+  "version": "1.0.0",
+  "description": "Colección de web-services que se comunican a los diferentes API's de la banca de Guatemala",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PabloVillagran/API_Bancos_GT.git"
+  },
+  "author": "Pablo Villagrán",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloVillagran/API_Bancos_GT/issues"
+  },
+  "homepage": "https://github.com/PabloVillagran/API_Bancos_GT#readme"
+}
