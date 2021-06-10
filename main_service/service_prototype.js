@@ -1,5 +1,4 @@
 import express from 'express';
-const app = express();
 import mysql from 'mysql';
 import prop_reader from 'properties-reader';
 
@@ -12,12 +11,13 @@ var connection = mysql.createConnection({
     database: properties.get('data_base.name')
 });
 
+const app = express();
+app.use(express.urlencoded({extended : true}));
+app.use(express.json());
+
 function Service(){
     this.puerto = '';
     this.nombre = '';
-
-    app.use(urlencoded({extended : true}));
-    app.use(json());
 }
 
 Service.prototype.start_service = function(){
@@ -41,12 +41,12 @@ Service.prototype.add_endpoint = function(method, url, func){
     }
 }
 
-Service.prototype.query = function(query, res){
+Service.prototype.query = function(query){
     connection.connect();
     connection.query(query, function(error, results, fields){
-        if(error)res = json({success:false, result: err});
+        if(error)return error;
         else{
-            res.json({results});
+            return results;
         }
     });
     connection.end();
