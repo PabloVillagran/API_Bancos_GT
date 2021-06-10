@@ -346,3 +346,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`detalle_cheque` (
 ENGINE = InnoDB;
 
 CREATE INDEX `fk_detalle_cheque_Consulta_Cheque1_idx` ON `mydb`.`detalle_cheque` (`id_consulta` ASC) ;
+
+-- -----------------------------------------------------
+-- Insert `mydb`.`banco`
+-- Inserta los bancos autorizados en el sistema
+-- -----------------------------------------------------
+INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('1','GyT');
+INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('2','Banrural');
+INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('3','BanTrab');
+INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('4','Banco Industrial');
+INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('5','BAC Credomatic');
+
+-- -----------------------------------------------------
+-- Insert `mydb`.`API_Banco`
+-- Inserta los bancos autorizados en el sistema
+-- -----------------------------------------------------
+INSERT INTO `mydb`.`API_Banco`(`endpoint`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/inicio_sesion/', '1');
+INSERT INTO `mydb`.`API_Banco`(`endpoint`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/registro_usuario/', '1');
