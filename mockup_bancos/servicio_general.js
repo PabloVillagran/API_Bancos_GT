@@ -13,6 +13,6 @@ function get_token(req, res){
     res.json({success:true, token: token});
 }
 
-app.post('/login', (req, res) => {get_token(req,res)});
+app.post('/mockup/inicio_sesion', (req, res) => {get_token(req,res)});
 
 app.listen(puerto, () => console.log(nombre +" @ port " + puerto));
