@@ -47,6 +47,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`API_Banco` (
   `idAPI` INT NOT NULL AUTO_INCREMENT,
   `endpoint` VARCHAR(45) NULL,
+  `servicio` VARCHAR(50) NOT NULL,
   `Banco_idBanco1` INT NOT NULL,
   PRIMARY KEY (`idAPI`),
   CONSTRAINT `fk_API_Banco_Banco1`
@@ -361,5 +362,5 @@ INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('5','BAC Credomatic');
 -- Insert `mydb`.`API_Banco`
 -- Inserta los bancos autorizados en el sistema
 -- -----------------------------------------------------
-INSERT INTO `mydb`.`API_Banco`(`endpoint`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/inicio_sesion/', '1');
-INSERT INTO `mydb`.`API_Banco`(`endpoint`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/registro_usuario/', '1');
+INSERT INTO `mydb`.`API_Banco`(`endpoint`,`servicio`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/inicio_sesion/', 'login', '1');
+INSERT INTO `mydb`.`API_Banco`(`endpoint`,`servicio`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/registro_usuario/', 'registro', '1');
