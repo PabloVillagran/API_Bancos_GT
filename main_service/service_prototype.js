@@ -41,15 +41,37 @@ Service.prototype.add_endpoint = function(method, url, func){
     }
 }
 
-Service.prototype.query = function(query){
-    connection.connect();
-    connection.query(query, function(error, results, fields){
-        if(error)return error;
+Service.prototype.dbConnect = (err) =>{
+    if ( !err ) {
+        console.log("Connected to MySQL");
+    } else if ( err ) {
+        console.log(err);
+    }
+}
+
+Service.prototype.dbDisconnect = function(){
+    console.log('disconnecting');
+    connection.end();
+}
+
+Service.prototype.connection = connection;
+
+Service.prototype.query_promise = (query) => new Promise((resolve, reject) => {
+    connection.query(query, function (err, rows, fields) {
+        if (err) {
+            return reject(err);
+        }
+        resolve(rows);
+    });
+});
+
+Service.prototype.query = (query) => {
+    connection.query(query, (error, results) => {
+        if(error) return error;
         else{
             return results;
         }
     });
-    connection.end();
 }
 
 export default Service;
