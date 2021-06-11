@@ -13,7 +13,7 @@ function get_token(req, res){
     res.json({success:true, token: token});
 }
 
-function get_saldo(req, res){
+function get_estado_cuenta(req, res){
     console.log(req.body.fecha_ini, req.body.fecha_fin)
     let detalle_aleatorio = generarRandom(req.body.fecha_ini, req.body.fecha_fin);
     res.json({
@@ -50,7 +50,23 @@ function getRandomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }  
 
+function get_saldo(req, res){
+    let sdisponible = Math.round(((Math.random() * 10000))*100)/100;
+    let sreserva = Math.round(((Math.random() * -500))*100)/100;
+    let sflotante = Math.round(((Math.random() * -500))*100)/100;
+    res.json(
+        {
+            "nombre_cuenta": req.body.numero_cuenta,
+            "disponible": sdisponible,
+            "reserva": sreserva,
+            "flotante": sflotante,
+            "total": Math.round((sdisponible + sreserva + sflotante)*100)/100
+        }
+    );
+}
+
 app.post('/mockup/inicio_sesion', (req, res) => {get_token(req,res)});
-app.post('/mockup/c/saldo', (req, res) => {get_saldo(req,res)})
+app.post('/mockup/c/estado_cuenta', (req, res) => {get_estado_cuenta(req,res)})
+app.post('/mockup/c/saldo', (req, res) => {get_saldo(req, res)})
 
 app.listen(puerto, () => console.log(nombre +" @ port " + puerto));
