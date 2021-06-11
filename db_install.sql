@@ -364,3 +364,4 @@ INSERT INTO `mydb`.`banco` (`idBanco`,`Nombre`) VALUES('5','BAC Credomatic');
 -- -----------------------------------------------------
 INSERT INTO `mydb`.`API_Banco`(`endpoint`,`servicio`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/inicio_sesion/', 'login', '1');
 INSERT INTO `mydb`.`API_Banco`(`endpoint`,`servicio`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/registro_usuario/', 'registro', '1');
+INSERT INTO `mydb`.`API_Banco`(`endpoint`,`servicio`, `banco_idBanco1`) VALUES ('http://localhost:9000/mockup/c/saldo', 'c_saldo', '1');
