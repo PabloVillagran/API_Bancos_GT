@@ -14,7 +14,6 @@ function get_token(req, res){
 }
 
 function get_estado_cuenta(req, res){
-    console.log(req.body.fecha_ini, req.body.fecha_fin)
     let detalle_aleatorio = generarRandom(req.body.fecha_ini, req.body.fecha_fin);
     res.json({
         success:true, 
@@ -24,10 +23,12 @@ function get_estado_cuenta(req, res){
 }
 
 function generarRandom(start, end){
-    let s = start.split('-');
-    let e = end.split('-');
+    let s = start.replace(/'/g,"").split('-');
+    let e = end.replace(/'/g,"").split('-');
     let s_date = new Date(s[0], s[1]-1, s[2]);
     let e_date = new Date(e[0], e[1]-1, e[2]);
+
+    console.log(start, end, s, e);
 
     let arr = new Array();
     for(let i = 0; i<Math.ceil(Math.random() * 6); i++){
@@ -45,7 +46,7 @@ function getRandomDesc() {
     return descs[r];
 }
 
-//randomDate(new Date(2021, 0, 1), new Date(2021, 5, 1))
+//getRandomDate(new Date(2021, 0, 1), new Date(2021, 5, 1))
 function getRandomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }  
